@@ -4,6 +4,34 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.content {
+body {
   background-color: #F6F6F6;
+  margin: 0;
+}
+
+.content {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 155px 1fr;
+}
+
+.header {
+  background-color: #161D6F;
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 36px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.sidebar {
+  background-color: #98DED9;
+  grid-row: 2 / 3;
+}
+
+.header h1 {
+  color: #C7FFD8;
 }
