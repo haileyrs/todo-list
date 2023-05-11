@@ -36,8 +36,11 @@ function addListeners() {
 }
 
 const content = document.querySelector('.content');
+const mainContent = document.createElement('div');
+mainContent.className = 'main-content'
 content.appendChild(sidebar());
 content.appendChild(header());
-content.appendChild(today());
+content.appendChild(mainContent);
+today();
 
 addListeners();

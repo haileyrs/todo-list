@@ -1,6 +1,6 @@
-function Projects(todo) {
+function Projects(id, title, todos) {
    
-  return {todo}
+  return {id, title, todos}
 }
 
 export default Projects;
