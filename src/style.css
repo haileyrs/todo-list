@@ -73,3 +73,51 @@ svg {
 .page-title {
   color: #7FB77E;
 }
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.todo-item {
+  border-radius: 15px;
+  border:#FFC090 1px solid;
+  display: grid;
+  grid-template-columns: 30px 1fr 85px;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.todo-item h4, .todo-item p {
+  color: #7FB77E;
+}
+
+.todo-item.completed-task {
+  background-color:#ffc0902a;
+}
+
+.todo-item.completed-task h4, .todo-item.completed-task p {
+  color:#B1D7B4;
+}
+
+.complete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border:#7FB77E 1px solid;
+}
+
+.complete:hover {
+  cursor: pointer;
+}
+
+.complete-check {
+  background-color: #B1D7B4;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
