@@ -87,6 +87,16 @@ svg {
   grid-template-columns: 30px 1fr 85px;
   align-items: center;
   padding-left: 8px;
+  transition: height 1s linear;
+  height: fit-content;
+}
+
+.expanded {
+  padding-bottom: 8px;
+}
+
+.expanded-details {
+  grid-column: 2 / 4;
 }
 
 .main-content h4, .main-content p {
@@ -120,4 +130,55 @@ svg {
   height: 12px;
   width: 12px;
   border-radius: 50%;
+}
+
+.edit-btn, .delete-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  cursor: pointer;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.438);
+}
+
+.modal-content {
+  margin: 64px auto auto auto;
+  width: 350px;
+  height: fit-content;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+}
+
+.modal-header {
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.modal-form {
+  background-color: #FFBF9B;
+  padding: 16px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-footer {
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: white;
 }

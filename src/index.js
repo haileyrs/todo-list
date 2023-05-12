@@ -41,6 +41,7 @@ mainContent.className = 'main-content'
 content.appendChild(sidebar());
 content.appendChild(header());
 content.appendChild(mainContent);
+
 today();
 
 addListeners();
