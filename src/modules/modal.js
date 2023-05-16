@@ -1,26 +1,7 @@
-function modal(type) {
+function modal() {
   const modalDiv = document.createElement("div");
-  modalDiv.className = 'modal'
-  if (type === "project") {
-    modalDiv.innerHTML = `
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Add Project</h3>
-        <span class="close">&times;</span>
-      </div>
-      <form id="projectForm">
-        <div class="modal-form">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" required />
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="save" id="save">Save</button>
-        </div>
-      </form>  
-    </div>
-    `;
-  } else if (type === "task") {
-    modalDiv.innerHTML = `
+  modalDiv.className = "modal";
+  modalDiv.innerHTML = `
     <div class="modal-content">
       <div class="modal-header">
         <h3>Add Task</h3>
@@ -46,7 +27,7 @@ function modal(type) {
       </form>  
     </div>
     `;
-  }
+
   return modalDiv;
 }
 

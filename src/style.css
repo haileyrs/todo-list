@@ -36,6 +36,24 @@ svg {
   color: #F7F6DC;
 }
 
+button {
+  cursor: pointer;
+  background-color:transparent;
+  font-size:medium;
+  font-weight: 600;
+  border-radius: 15px;
+  border: none;
+  border-color: #FFC090;
+  color: #F7F6DC;
+  padding: 16px;
+  box-shadow: 0 0 40px 40px #FFC090 inset, 0 0 0 0 #FFC090;
+  transition: all 150ms ease-in-out;
+  
+  &:hover {
+    box-shadow: 0 0 10px 0 #FFC090 inset, 0 0 10px 4px #FFC090;
+  }
+}
+
 .sidebar {
   background-color: #B1D7B4;
   grid-row: 2 / 3;
@@ -53,9 +71,46 @@ svg {
 
 .sub-item {
   display: flex;
-  align-items: center;
   border-radius: 15px;
   padding: 12px;
+}
+
+.add-project-btn {
+  flex-direction: column;
+  height: 20px;
+  transition: height 0.7s ease-out;
+}
+
+.add-project-btn div {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.input-area {
+  visibility: hidden;
+}
+
+.input-area p {
+  font-size: 12px;
+}
+
+input[type="text"], textarea {
+  background-color: #F7F6DC;
+  border: none;
+  border-radius: 5px;
+  height: 2rem;
+  color: #7FB77E;
+  padding-right: 0;
+}
+
+input:focus, textarea:focus {
+  outline: solid #7FB77E;
+  outline-width: 1px;
+}
+
+label, .input-area p {
+  color: #F7F6DC;
 }
 
 .sub-item:hover, .sub-item.active {

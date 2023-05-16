@@ -30,7 +30,6 @@ function sidebar() {
   `;
 
   div.appendChild(listProjects());
-  // addListeners()
 
   return div;
 }
@@ -39,15 +38,27 @@ function listProjects() {
   const subItems = document.createElement("div");
   subItems.className = "sub-items";
   const div = document.createElement("div");
-  div.className = "sub-item add-project";
+  div.className = "sub-item add-project-btn";
   div.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box</title><path fill="#F7F6DC" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
-    <h4 class="add-project">Add Project</h4>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box</title><path fill="#F7F6DC" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
+      <h4 class="add-project">Add Project</h4>
+    </div>
+    <div class="input-area">
+      <form>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required />
+        <p>Press enter to create</p>
+      </form>
+    </div>
   `;
-  div.addEventListener('click', () => {
-    // const modal = document.querySelector('.modal');
-    // modal.style.display = "block";
-    document.body.appendChild(modal("project"));
+
+  div.addEventListener('click', async () => {
+    const btn = document.querySelector('.add-project-btn');
+    const inputField = document.querySelector('.input-area');
+    btn.style.height = '110px';
+    await new Promise(resolve => setTimeout(resolve, 700))
+    inputField.style.visibility = "visible";
   })
   subItems.appendChild(div);
 
