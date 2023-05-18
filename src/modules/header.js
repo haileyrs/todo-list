@@ -1,5 +1,3 @@
-import modal from "./modal";
-
 function header() {
   const div = document.createElement("div");
   div.className = "header";
@@ -11,7 +9,10 @@ function header() {
   const btn = document.createElement('button');
   btn.className = "add-task-btn";
   btn.textContent = "+ Add Task";
-  btn.addEventListener('click', () => modal());
+  btn.addEventListener('click', () => {
+    const modalItem = document.querySelector('.modal');
+    modalItem.style.display = 'block';
+  });
 
   div.appendChild(btn);
 

@@ -73,6 +73,7 @@ button {
   display: flex;
   border-radius: 15px;
   padding: 12px;
+  margin: 4px;
 }
 
 .add-project-btn {
@@ -197,7 +198,7 @@ label, .input-area p {
 }
 
 .modal {
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -212,7 +213,7 @@ label, .input-area p {
   width: 350px;
   height: fit-content;
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 50px 1fr 50px; 
 }
 
 .modal-header {
@@ -220,14 +221,19 @@ label, .input-area p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: #B1D7B4;
+}
+
+.modal-header h3 {
+  color:#F7F6DC;
 }
 
 .modal-form {
-  background-color: #FFBF9B;
+  background-color: #B1D7B4;
   padding: 16px 36px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .modal-footer {
@@ -235,5 +241,19 @@ label, .input-area p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: white;
+  background-color: #B1D7B4;
+}
+
+.close-modal {
+  color: #B46060;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #914c4c;
+  text-decoration: none;
+  cursor: pointer;
 }

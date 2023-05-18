@@ -1,3 +1,7 @@
+function formSubmit() {
+
+}
+
 function modal() {
   const modalDiv = document.createElement("div");
   modalDiv.className = "modal";
@@ -5,18 +9,18 @@ function modal() {
     <div class="modal-content">
       <div class="modal-header">
         <h3>Add Task</h3>
-        <span class="close">&times;</span>
+        <span class="close-modal">&times;</span>
       </div>
       <form id="addBookForm">
         <div class="modal-form">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" required />
+          <label for="taskTitle">Title</label>
+          <input type="text" name="taskTitle" id="task-title" required />
           <label for="project">Project</label>
 
-          <input type="text" name="author" id="author" required />
+          <input type="text" name="project" id="project" required />
 
           <label for="dueDate">Due Date</label>
-          <input type="text" name="dueDate" id="dueDate" required/>
+          <input type="text" name="dueDate" id="due-date" required/>
           <label for="description">Description</label>
           <textarea name="description" id="description"></textarea>
           

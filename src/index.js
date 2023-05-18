@@ -2,6 +2,7 @@ import _ from 'lodash';
 import './style.css';
 import header from './modules/header';
 import sidebar from './modules/sidebar';
+import modal from './modules/modal';
 import today from './modules/today';
 import thisWeek from './modules/thisWeek';
 import important from './modules/important';
@@ -33,6 +34,32 @@ function addListeners() {
     important();
     changeActiveClass('important');
   });
+
+  const projectInput = document.querySelector('#project-title');
+  projectInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      console.log('val')
+      // Projects.push(new Project(projectInput.value))
+    }
+  });
+
+  const closeModal = document.querySelector('.close-modal');
+  closeModal.addEventListener('click', () => {
+    const modalItem = document.querySelector(".modal");
+    const taskTitleInput = document.querySelector("#task-title");
+    const projectInput = document.querySelector("#project");
+    const dueDateInput = document.querySelector("#due-date");
+    const descInput = document.querySelector("#description");
+    taskTitleInput.value = "";
+    projectInput.value = "";
+    dueDateInput.value = "";
+    descInput.value = "";
+    modalItem.style.display = "none";
+  });
+
+  const saveTask = document.querySelector('#save');
+  
+  
 }
 
 const content = document.querySelector('.content');
@@ -41,6 +68,7 @@ mainContent.className = 'main-content'
 content.appendChild(sidebar());
 content.appendChild(header());
 content.appendChild(mainContent);
+content.appendChild(modal());
 
 today();
 

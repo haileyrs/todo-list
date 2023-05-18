@@ -46,8 +46,8 @@ function listProjects() {
     </div>
     <div class="input-area">
       <form>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" required />
+        <label for="project-title">Title</label>
+        <input type="text" name="project-title" id="project-title" required />
         <p>Press enter to create</p>
       </form>
     </div>
