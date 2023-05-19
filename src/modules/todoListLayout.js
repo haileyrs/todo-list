@@ -20,6 +20,7 @@ function viewDetails(todo, object) {
 }
 
 function changeStatus(todo, object, todoItem) {
+  // this will need to be fixed
   todo.completed = !todo.completed;
 
   if (todo.completed) {

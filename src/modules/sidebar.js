@@ -1,10 +1,22 @@
 import changeActiveClass from "./changeActiveClass";
 import projectPage from "./projectPage";
-import modal from "./modal";
+import Project from './objects/project';
 
-// import Projects from './objects/projects';
-const defaultProject = { title: "General", todos: [] };
-const projects = [defaultProject];
+// const defaultProject = { title: "General", todos: [] };
+let projects = [];
+
+function getProjects() {
+  if (!window.localStorage.getItem("projects")) {
+    const defaultProject = new Project("General", "")
+    console.log(JSON.stringify(defaultProject))
+    window.localStorage.setItem("projects", JSON.stringify([defaultProject]));
+  }
+  // const defaultProject = new Project("General", "")
+  // console.log(JSON.stringify([defaultProject]))
+  // window.localStorage.setItem("projects", JSON.stringify([defaultProject]));
+  projects = JSON.parse(window.localStorage.getItem("projects"))
+  console.log(projects)
+}
 
 function sidebar() {
   const div = document.createElement("div");
@@ -61,6 +73,8 @@ function listProjects() {
     inputField.style.visibility = "visible";
   })
   subItems.appendChild(div);
+
+  getProjects();
 
   if (projects.length > 0) {
     for (let i = 0; i < projects.length; i++) {

@@ -1,25 +1,25 @@
-import Todo from "./objects/todos";
+import Todo from "./objects/todo";
 import todoListLayout from "./todoListLayout";
-const defaultTodo1 = Todo(
-  "Walk the dog",
-  "Need to go at least a mile",
-  "5/13/23",
-  "high",
-  "General",
-  true
-);
-const defaultTodo2 = Todo(
-  "Grocery shopping",
-  "list is in the notes app",
-  "5/15/23",
-  "medium",
-  "General"
-);
-const todoList = [defaultTodo1, defaultTodo2];
+// const defaultTodo1 = Todo(
+//   "Walk the dog",
+//   "Need to go at least a mile",
+//   "5/13/23",
+//   "high",
+//   "General",
+//   true
+// );
+// const defaultTodo2 = Todo(
+//   "Grocery shopping",
+//   "list is in the notes app",
+//   "5/15/23",
+//   "medium",
+//   "General"
+// );
+// const todoList = [defaultTodo1, defaultTodo2];
 
-todoList.sort(function(a, b) {
-  return a.completed - b.completed
-});
+// todoList.sort(function(a, b) {
+//   return a.completed - b.completed
+// });
 
 
 function projectPage(project) {
@@ -34,7 +34,11 @@ function projectPage(project) {
   const taskList = document.createElement("div");
   taskList.className = "task-list";
 
-  if (todoList.length > 0) {
+  if (project.todos.length > 0) {
+    const todoList = project.todos.sort(function(a, b) {
+      return a.completed - b.completed
+    });
+
     for (let i = 0; i < todoList.length; i++) {
       taskList.appendChild(todoListLayout(todoList[i]));
     }

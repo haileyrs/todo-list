@@ -7,6 +7,8 @@ import today from './modules/today';
 import thisWeek from './modules/thisWeek';
 import important from './modules/important';
 import changeActiveClass from './modules/changeActiveClass';
+import Project from './modules/objects/project';
+import storageAvailable from './modules/storageAvailable';
 
 // function component() {
 //   const element = document.createElement('div');
@@ -38,8 +40,10 @@ function addListeners() {
   const projectInput = document.querySelector('#project-title');
   projectInput.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-      console.log('val')
-      // Projects.push(new Project(projectInput.value))
+      console.log(projectInput.value);
+      const projects = JSON.parse(window.localStorage.getItem("projects"));
+      projects.push(new Project(projectInput.value));
+      window.localStorage.setItem("projects", JSON.stringify(projects))
     }
   });
 
@@ -73,3 +77,4 @@ content.appendChild(modal());
 today();
 
 addListeners();
+
