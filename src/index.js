@@ -70,11 +70,13 @@ function addListeners() {
   const saveTask = document.querySelector("#save");
   saveTask.addEventListener("click", (e) => {
     e.preventDefault();
-    const todos = JSON.parse(window.localStorage.getItem("todos"));
-    todos.push(new Todo(taskTitleInput.value, descInput.value, dueDateInput.value, prioritySelect.value, projectSelect.value));
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-    resetModal();
-    initializePage();
+    if (taskTitleInput.value && dueDateInput.value && descInput.value) {
+      const todos = JSON.parse(window.localStorage.getItem("todos"));
+      todos.push(new Todo(taskTitleInput.value, descInput.value, dueDateInput.value, prioritySelect.value, projectSelect.value));
+      window.localStorage.setItem("todos", JSON.stringify(todos));
+      resetModal();
+      initializePage();
+    }
   });
 }
 function initializePage() {

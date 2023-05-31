@@ -9,19 +9,9 @@ class Project {
   }
 
   getTodos() {
-    return this.todos
-  }
-
-  getToday() {
-
-  }
-
-  getThisWeek() {
-
-  }
-
-  getImportant() {
-    
+    const todos = JSON.parse(window.localStorage.getItem("todos"));
+    const projectTodos = todos.map(x => x.project === this.title)
+    return projectTodos
   }
 }
 

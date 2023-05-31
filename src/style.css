@@ -96,7 +96,7 @@ button {
   font-size: 12px;
 }
 
-input[type="text"], textarea, select {
+input[type="text"], input[type="date"], textarea, select {
   background-color: #F7F6DC;
   border: none;
   border-radius: 5px;

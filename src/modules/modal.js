@@ -37,7 +37,7 @@ function modal() {
           </select>
 
           <label for="dueDate">Due Date</label>
-          <input type="text" name="dueDate" id="due-date" required/>
+          <input type="date" name="dueDate" id="due-date" required/>
           
           <label for="priority">Priority</label>
           <select name="priority" id="priority" required>

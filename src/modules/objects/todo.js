@@ -16,6 +16,18 @@ class Todo {
     return this.project
   }
 
+  getToday() {
+    
+  }
+
+  getThisWeek() {
+
+  }
+
+  getImportant() {
+    
+  }
+
 }
 
 export default Todo;
