@@ -1,14 +1,15 @@
-import _ from 'lodash';
-import './style.css';
-import header from './modules/header';
-import sidebar from './modules/sidebar';
-import modal from './modules/modal';
-import today from './modules/today';
-import thisWeek from './modules/thisWeek';
-import important from './modules/important';
-import changeActiveClass from './modules/changeActiveClass';
-import Project from './modules/objects/project';
-import storageAvailable from './modules/storageAvailable';
+import _ from "lodash";
+import "./style.css";
+import header from "./modules/header";
+import sidebar from "./modules/sidebar";
+import modal from "./modules/modal";
+import today from "./modules/today";
+import thisWeek from "./modules/thisWeek";
+import important from "./modules/important";
+import changeActiveClass from "./modules/changeActiveClass";
+import Project from "./modules/objects/project";
+import Todo from "./modules/objects/todo";
+import storageAvailable from "./modules/storageAvailable";
 
 // function component() {
 //   const element = document.createElement('div');
@@ -20,61 +21,76 @@ import storageAvailable from './modules/storageAvailable';
 // }
 
 function addListeners() {
-  const todayBtn = document.querySelector('.today');
-  const thisWeekBtn = document.querySelector('.this-week');
-  const importantBtn = document.querySelector('.important');
+  const todayBtn = document.querySelector(".today");
+  const thisWeekBtn = document.querySelector(".this-week");
+  const importantBtn = document.querySelector(".important");
 
-  todayBtn.addEventListener('click', () => {
+  todayBtn.addEventListener("click", () => {
     today();
-    changeActiveClass('today')
+    changeActiveClass("today");
   });
-  thisWeekBtn.addEventListener('click', () => {
+  thisWeekBtn.addEventListener("click", () => {
     thisWeek();
-    changeActiveClass('this-week');
+    changeActiveClass("this-week");
   });
-  importantBtn.addEventListener('click', () => {
+  importantBtn.addEventListener("click", () => {
     important();
-    changeActiveClass('important');
+    changeActiveClass("important");
   });
 
-  const projectInput = document.querySelector('#project-title');
-  projectInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
+  const projectInput = document.querySelector("#project-title");
+  projectInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
       console.log(projectInput.value);
       const projects = JSON.parse(window.localStorage.getItem("projects"));
       projects.push(new Project(projectInput.value));
-      window.localStorage.setItem("projects", JSON.stringify(projects))
+      window.localStorage.setItem("projects", JSON.stringify(projects));
     }
   });
 
-  const closeModal = document.querySelector('.close-modal');
-  closeModal.addEventListener('click', () => {
-    const modalItem = document.querySelector(".modal");
-    const taskTitleInput = document.querySelector("#task-title");
-    const projectInput = document.querySelector("#project");
-    const dueDateInput = document.querySelector("#due-date");
-    const descInput = document.querySelector("#description");
+  const modalItem = document.querySelector(".modal");
+  const taskTitleInput = document.querySelector("#task-title");
+  const projectSelect = document.querySelector("#project");
+  const dueDateInput = document.querySelector("#due-date");
+  const prioritySelect = document.querySelector('#priority');
+  const descInput = document.querySelector("#description");
+
+  function resetModal() {
     taskTitleInput.value = "";
-    projectInput.value = "";
+    projectSelect.value = "";
+    prioritySelect.value = "";
     dueDateInput.value = "";
     descInput.value = "";
     modalItem.style.display = "none";
+  }
+
+  const closeModal = document.querySelector(".close-modal");
+  closeModal.addEventListener("click", () => resetModal());
+
+  const saveTask = document.querySelector("#save");
+  saveTask.addEventListener("click", (e) => {
+    e.preventDefault();
+    const todos = JSON.parse(window.localStorage.getItem("todos"));
+    todos.push(new Todo(taskTitleInput.value, descInput.value, dueDateInput.value, prioritySelect.value, projectSelect.value));
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+    resetModal();
+    initializePage();
   });
-
-  const saveTask = document.querySelector('#save');
-  
-  
 }
+function initializePage() {
+  const content = document.querySelector(".content");
+  content.innerHTML = ''
+  const mainContent = document.createElement("div");
+  mainContent.className = "main-content";
+  content.appendChild(sidebar());
+  content.appendChild(header());
+  content.appendChild(mainContent);
+  content.appendChild(modal());
 
-const content = document.querySelector('.content');
-const mainContent = document.createElement('div');
-mainContent.className = 'main-content'
-content.appendChild(sidebar());
-content.appendChild(header());
-content.appendChild(mainContent);
-content.appendChild(modal());
+  today();
 
-today();
+  addListeners();
+};
 
-addListeners();
+initializePage()
 
